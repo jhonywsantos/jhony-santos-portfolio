@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhony Santos | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesque:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E35FF',
+                        dark: '#1E1E1E',
+                        light: '#FDFFEF',
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesque', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1E1E1E;
+            color: #FDFFEF;
+            overflow-x: hidden;
+        }
+        ::selection {
+            background-color: #2E35FF;
+            color: #FDFFEF;
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px #FDFFEF;
+            color: transparent;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="smooth-scroll">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
