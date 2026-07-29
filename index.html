@@ -538,8 +538,9 @@
         </div>
 
         <!-- Projects -->
-        <section id="projects" class="py-24 px-4 sm:px-6 bg-[#181818] scroll-mt-20 fade-in">
-            <div class="container mx-auto">
+        <section id="projects" class="relative py-24 px-4 sm:px-6 bg-[#181818] scroll-mt-20 fade-in overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('assets/background/projs.png');"></div>
+            <div class="container mx-auto relative z-10">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
                     <div class="w-full slide-in-left">
                         <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tighter mb-4 uppercase">PROJETOS</h2>
@@ -810,7 +811,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-24 border-t border-white/5 relative overflow-hidden" style="background-image: url('assets/footer.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <footer class="py-24 border-t border-white/5 relative overflow-hidden" style="background-image: url('assets/background/footer.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <!-- Overlay for better text readability -->
         <div class="absolute inset-0 bg-dark/0"></div>
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
