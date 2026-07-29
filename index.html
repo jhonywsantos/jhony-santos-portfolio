@@ -622,7 +622,7 @@
         </section>
 
         <!-- Design Carousel -->
-        <section id="design-carousel" class="relative h-[300vh] bg-[#181818]">
+        <section id="design-carousel" class="relative h-[180vh] md:h-[220vh] bg-[#181818]">
             <div class="sticky top-0 flex flex-col h-screen justify-start items-center overflow-hidden pt-16 md:pt-24">
                 <div id="carousel-container" class="flex gap-4 md:gap-6">
                     <!-- Design Card -->
@@ -635,11 +635,11 @@
                     </div>
 
                     <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/halftone/10thingsihateaboutyou.jpg" alt="10 Things I Hate About You" class="w-full h-full object-contain transition-all duration-700" />
+                        <img src="assets/projects/design/halftone/hannibal.jpg" alt="Hannibal" class="w-full h-full object-contain transition-all duration-700" />
                     </div>
 
                     <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/halftone/hannibal.jpg" alt="Hannibal" class="w-full h-full object-contain transition-all duration-700" />
+                        <img src="assets/projects/design/halftone/10thingsihateaboutyou.jpg" alt="10 Things I Hate About You" class="w-full h-full object-contain transition-all duration-700" />
                     </div>
 
                     <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
@@ -656,6 +656,10 @@
 
                     <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
                         <img src="assets/projects/design/halftone/the%20shine.jpg" alt="The Shine" class="w-full h-full object-contain transition-all duration-700" />
+                    </div>
+
+                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
+                        <img src="assets/projects/design/halftone/obsession.png" alt="OBSESSION" class="w-full h-full object-contain transition-all duration-700" />
                     </div>
                 </div>
             </div>
@@ -951,8 +955,8 @@
                     if (entry.isIntersecting) {
                         isCarouselActive = true;
                         const rect = designCarousel.getBoundingClientRect();
-                        carouselStart = window.scrollY + rect.top - window.innerHeight;
-                        carouselEnd = window.scrollY + rect.bottom - window.innerHeight;
+                        carouselStart = window.scrollY + rect.top - window.innerHeight * 0.25;
+                        carouselEnd = window.scrollY + rect.bottom - window.innerHeight * 0.2;
                     } else {
                         isCarouselActive = false;
                     }
