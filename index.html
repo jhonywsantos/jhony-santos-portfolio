@@ -679,11 +679,11 @@
 
                         <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-4 sm:gap-6">
                             <div class="flex-1 min-w-[120px] bg-primary/10 p-5 md:p-6 rounded-2xl md:rounded-3xl border border-primary/20 text-center lg:text-left transition-all hover:bg-primary/20">
-                                <span class="block text-3xl md:text-4xl font-bold text-primary mb-1">+3</span>
+                                <span class="counter block text-3xl md:text-4xl font-bold text-primary mb-1" data-target="4" data-suffix="+">0</span>
                                 <span class="text-[10px] md:text-xs text-light/40 uppercase tracking-widest font-bold">Anos de Experiência</span>
                             </div>
                             <div class="flex-1 min-w-[120px] bg-primary/10 p-5 md:p-6 rounded-2xl md:rounded-3xl border border-primary/20 text-center lg:text-left transition-all hover:bg-primary/20">
-                                <span class="block text-3xl md:text-4xl font-bold text-primary mb-1">20+</span>
+                                <span class="counter block text-3xl md:text-4xl font-bold text-primary mb-1" data-target="25">0</span>
                                 <span class="text-[10px] md:text-xs text-light/40 uppercase tracking-widest font-bold">Projetos Entregues</span>
                             </div>
                         </div>
@@ -700,7 +700,7 @@
                         <div class="relative pl-8 md:pl-12 border-l-2 border-white/10 pb-6 md:pb-8 last:pb-0">
                             <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(46,53,255,0.8)]"></div>
                             <span class="text-primary font-bold text-[10px] md:text-sm tracking-widest uppercase mb-1 md:mb-2 block">2026 - ATUAL</span>
-                            <h3 class="text-lg md:text-2xl font-bold text-light mb-1 leading-tight">Estagiario de Informática (Designer)</h3>
+                            <h3 class="text-lg md:text-2xl font-bold text-light mb-1 leading-tight">Estagiário de Informática (Designer)</h3>
                             <h4 class="text-sm md:text-lg text-light/40 mb-3 md:mb-4">Secretaria Municipal de Educação de Arapiraca, Setor NITED</h4>
                             <p class="text-sm md:text-base text-light/60 leading-relaxed font-light">Desenvolvimento de protótipos de interfaces, criação de peças gráficas digitais, design editorial de livros didáticos e testes de usabilidade, funcionalidade e qualidade de ferramentas e sistemas.</p>
                         </div>
@@ -919,6 +919,43 @@
         document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .progress-bar').forEach(el => {
             observer.observe(el);
         });
+
+        // Experience counters animation
+        const counters = document.querySelectorAll('.counter');
+
+        const animateCounter = (counter) => {
+            const target = Number(counter.dataset.target || 0);
+            const suffix = counter.dataset.suffix || '';
+            const duration = 1400;
+            const startTime = performance.now();
+
+            const updateValue = (timestamp) => {
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * target);
+                counter.textContent = `${currentValue}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateValue);
+                } else {
+                    counter.textContent = `${target}${suffix}`;
+                }
+            };
+
+            requestAnimationFrame(updateValue);
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.6
+        });
+
+        counters.forEach(counter => counterObserver.observe(counter));
 
         // Design Carousel Scroll Animation
         const designCarousel = document.getElementById('design-carousel');
