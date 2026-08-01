@@ -83,7 +83,7 @@
                 </p>
                 
                 <p class="text-sm text-light/60 mt-12">
-                    Última atualização: Dezembro 2025
+                    Última atualização: <span id="last-update-date">Carregando...</span>
                 </p>
             </div>
             
@@ -94,5 +94,23 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('last-update-date');
+            if (!el) return;
+
+            const rawDate = document.lastModified;
+            if (!rawDate) {
+                el.textContent = 'Não disponível';
+                return;
+            }
+
+            const date = new Date(rawDate);
+            el.textContent = date.toLocaleDateString('pt-BR', {
+                month: 'long',
+                year: 'numeric'
+            }).replace(/\b\w/g, (char) => char.toUpperCase());
+        });
+    </script>
 </body>
 </html>
