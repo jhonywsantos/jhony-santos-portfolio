@@ -6,6 +6,8 @@ const closeMenuBtn = document.getElementById('close-menu');
 const bar1 = document.getElementById('bar1');
 const bar2 = document.getElementById('bar2');
 const bar3 = document.getElementById('bar3');
+const contactWhatsappButton = document.getElementById('contact-whatsapp');
+const whatsappUrl = 'https://wa.me/5582996975394?text=' + encodeURIComponent('Tenho interesse em criar um projeto');
 let isMenuOpen = false;
 
 // Mobile menu toggle
@@ -59,6 +61,13 @@ document.querySelectorAll('.smooth-link').forEach(link => {
 
 // Set current year
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// WhatsApp contact action
+if (contactWhatsappButton) {
+    contactWhatsappButton.addEventListener('click', () => {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+}
 
 // Scroll-triggered animations
 const observerOptions = {
