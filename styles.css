@@ -196,6 +196,32 @@ body {
 .design-card .bg-cover {
     will-change: transform;
 }
+.certificates-section {
+    background-color: #11121a;
+}
+.certificate-card {
+    position: relative;
+}
+.certificate-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(46, 53, 255, 0.12), transparent 35%);
+    pointer-events: none;
+}
+.certificate-label {
+    display: inline-flex;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(253, 255, 239, 0.72);
+}
+@media (max-width: 768px) {
+    .certificate-card {
+        padding: 2rem;
+    }
+}
 /* Mobile Menu Styles */
 #mobile-menu {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
