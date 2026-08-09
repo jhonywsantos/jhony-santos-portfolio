@@ -201,6 +201,7 @@ body {
 }
 .certificate-card {
     position: relative;
+    min-width: 0;
 }
 .certificate-card::after {
     content: "";
@@ -208,6 +209,15 @@ body {
     inset: 0;
     background: radial-gradient(circle at top right, rgba(46, 53, 255, 0.12), transparent 35%);
     pointer-events: none;
+}
+.certificate-card h3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.08;
+}
+.certificate-card > .relative {
+    min-width: 0;
 }
 .certificate-label {
     display: inline-flex;
@@ -219,7 +229,18 @@ body {
 }
 @media (max-width: 768px) {
     .certificate-card {
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+    .certificate-card h3 {
+        font-size: 1.65rem;
+        line-height: 1.1;
+    }
+    .certificate-card footer {
+        width: 100%;
+    }
+    .certificate-card footer .inline-flex {
+        width: 100%;
+        justify-content: center;
     }
 }
 /* Mobile Menu Styles */
