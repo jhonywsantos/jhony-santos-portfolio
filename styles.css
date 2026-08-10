@@ -243,6 +243,29 @@ body {
         justify-content: center;
     }
 }
+/* Experience mockup styles */
+.experience-mockup {
+    max-width: 580px;
+}
+.experience-mockup img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: contain;
+}
+@media (min-width: 1024px) {
+    .experience-mockup {
+        max-width: 480px;
+        margin-left: 1rem;
+    }
+}
+@media (max-width: 640px) {
+    .experience-mockup {
+        max-width: 380px;
+    }
+}
 /* Mobile Menu Styles */
 #mobile-menu {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
