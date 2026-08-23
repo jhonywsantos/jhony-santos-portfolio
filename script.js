@@ -125,53 +125,79 @@ const counterObserver = new IntersectionObserver((entries, observer) => {
 
 counters.forEach(counter => counterObserver.observe(counter));
 
-// Design Carousel Scroll Animation
+// Design Carousel controls (arrows + indicators)
 const designCarousel = document.getElementById('design-carousel');
-const carouselContainer = document.getElementById('carousel-container');
+if (designCarousel) {
+    const viewport = designCarousel.querySelector('.carousel-viewport');
+    const track = designCarousel.querySelector('.carousel-track');
+    const slides = track ? Array.from(track.querySelectorAll('.carousel-slide')) : [];
+    const prevBtn = designCarousel.querySelector('.carousel-prev');
+    const nextBtn = designCarousel.querySelector('.carousel-next');
+    const indicatorsContainer = designCarousel.querySelector('.carousel-indicators');
 
-if (designCarousel && carouselContainer) {
-    let isCarouselActive = false;
-    let carouselStart = 0;
-    let carouselEnd = 0;
+    if (viewport && slides.length) {
+        // build indicators
+        const centerSlide = (index, behavior = 'smooth') => {
+            const s = slides[index];
+            const targetLeft = s.offsetLeft - (viewport.clientWidth - s.offsetWidth) / 2;
+            viewport.scrollTo({ left: Math.max(0, Math.round(targetLeft)), behavior });
+        };
 
-    const updateCarouselPosition = () => {
-        if (!isCarouselActive) return;
-
-        const scrollY = window.scrollY;
-        const progress = Math.max(0, Math.min(1, (scrollY - carouselStart) / (carouselEnd - carouselStart)));
-        
-        // Transform progress to horizontal movement (from 0% to -95%)
-        const translateX = progress * -95;
-        carouselContainer.style.transform = `translateX(${translateX}%)`;
-    };
-
-    let ticking = false;
-    const handleScroll = () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                updateCarouselPosition();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    };
-
-    const carouselObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                isCarouselActive = true;
-                const rect = designCarousel.getBoundingClientRect();
-                carouselStart = window.scrollY + rect.top - window.innerHeight * 0.25;
-                carouselEnd = window.scrollY + rect.bottom - window.innerHeight * 0.2;
-            } else {
-                isCarouselActive = false;
-            }
+        slides.forEach((s, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            b.dataset.index = i;
+            if (i === 0) b.classList.add('active');
+            b.addEventListener('click', () => centerSlide(i, 'smooth'));
+            if (indicatorsContainer) indicatorsContainer.appendChild(b);
         });
-    }, {
-        threshold: 0,
-        rootMargin: '-50% 0px -50% 0px'
-    });
 
-    carouselObserver.observe(designCarousel);
-    window.addEventListener('scroll', handleScroll);
+        const updateActive = () => {
+            const center = viewport.scrollLeft + viewport.clientWidth / 2;
+            let closest = 0; let minDiff = Infinity;
+            slides.forEach((s, idx) => {
+                const sCenter = s.offsetLeft + s.offsetWidth / 2;
+                const diff = Math.abs(center - sCenter);
+                if (diff < minDiff) { minDiff = diff; closest = idx; }
+            });
+            if (indicatorsContainer) {
+                Array.from(indicatorsContainer.children).forEach((btn, idx) => {
+                    btn.classList.toggle('active', idx === closest);
+                });
+            }
+        };
+
+        let scrollTimeout = null;
+        viewport.addEventListener('scroll', () => {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateActive, 80);
+        });
+
+        const getCurrentIndex = () => {
+            const center = viewport.scrollLeft + viewport.clientWidth / 2;
+            let closest = 0; let minDiff = Infinity;
+            slides.forEach((s, idx) => {
+                const sCenter = s.offsetLeft + s.offsetWidth / 2;
+                const diff = Math.abs(center - sCenter);
+                if (diff < minDiff) { minDiff = diff; closest = idx; }
+            });
+            return closest;
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            const idx = getCurrentIndex();
+            const prev = (idx - 1 + slides.length) % slides.length;
+            centerSlide(prev, 'smooth');
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            const idx = getCurrentIndex();
+            const next = (idx + 1) % slides.length;
+            centerSlide(next, 'smooth');
+        });
+
+        // initialize to first slide centered (no vertical jump)
+        centerSlide(0, 'auto');
+        updateActive();
+    }
 }

@@ -313,7 +313,7 @@
             </div>
         </section>
 
-        <!-- Certificados -->
+<!-- Certificados
         <section class="certificates-section py-24 px-4 sm:px-6 bg-[#11121a] scroll-mt-20 fade-in">
             <div class="container mx-auto">
                 <div class="text-left mb-14 max-w-3xl">
@@ -364,7 +364,7 @@
                 </div>
             </div>
         </section>
-
+-->
         <!-- Marquee Faixa Azul -->
         <div class="bg-primary py-8 md:py-12 overflow-hidden whitespace-nowrap border-y-2 border-dark relative z-10">
             <div class="inline-block animate-[marquee_20s_linear_infinite]">
@@ -463,46 +463,52 @@
             </div>
         </section>
 
-        <!-- Design Carousel -->
-        <section id="design-carousel" class="relative h-[120vh] sm:h-[150vh] md:h-[220vh] bg-[#181818]">
-            <div class="sticky top-0 flex flex-col h-screen justify-start items-center overflow-hidden pt-8 sm:pt-16 md:pt-24">
-                <div id="carousel-container" class="flex gap-4 md:gap-6">
-                    <!-- Design Card -->
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/halftone/thunderbolts.jpg" alt="Thunderbolts" class="w-full h-full object-contain transition-all duration-700" />
+        <!-- Design Carousel: horizontal scroll carousel -->
+        <section id="design-carousel" class="relative py-12 md:py-20 bg-[#181818]">
+            <div class="container mx-auto relative z-10">
+                <div class="design-carousel relative">
+                    <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                        <svg class="w-6 h-6 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <div class="carousel-viewport overflow-x-auto no-scrollbar">
+                        <div class="carousel-track flex gap-4 md:gap-6 items-center">
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/obsession.png" alt="OBSESSION" class="carousel-image"/>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/interstellar.png" alt="Interstellar" class="carousel-image"/>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/supernatural.jpg" alt="Supernatural" class="carousel-image"/>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/scream.jpg" alt="Scream" class="carousel-image"/>
+                            </div>
+                            
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/hannibal.jpg" alt="Hannibal" class="carousel-image"/>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/nosferatu.jpg" alt="Insidious" class="carousel-image"/>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0">
+                                <img src="assets/projects/design/10thingsihateaboutyou.jpg" alt="10 Things I Hate About You" class="carousel-image"/>
+                            </div>
+                
+                        </div>
                     </div>
 
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/we live in time.jpg" alt="We Live In Time" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
+                    <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                        <svg class="w-6 h-6 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
 
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/hannibal.jpg" alt="Hannibal" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/10thingsihateaboutyou.jpg" alt="10 Things I Hate About You" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/obsession.png" alt="OBSESSION" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/spiderman.png" alt="Spider-Man" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/scream.jpg" alt="Scream" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/supernatural.jpg" alt="Supernatural" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
-
-                    <div class="design-card group relative h-[250px] aspect-[4/5] md:h-[350px] overflow-hidden rounded-3xl flex-shrink-0">
-                        <img src="assets/projects/design/interstellar.png" alt="Interstellar" class="w-full h-full object-contain transition-all duration-700" />
-                    </div>
+                    <div class="carousel-indicators mt-6 flex justify-center gap-2" aria-hidden="false"></div>
                 </div>
             </div>
         </section>
