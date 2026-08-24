@@ -307,7 +307,7 @@ body {
     align-items: center;
     justify-content: center;
     /* min-width controls how big each item appears in the horizontal scroll */
-    min-width: 200px;
+    min-width: 240px;
 }
 
 /* Larger min-width on wider screens */
@@ -324,7 +324,7 @@ body {
     height: auto;
     object-fit: contain;
     max-width: calc(100%); /* never overflow the slide */
-    max-height: 280px; /* default mobile cap */
+    max-height: 320px; /* default mobile cap */
     border-radius: 1.75rem; /* match obsession.png / interstellar.png rounding */
 }
 
@@ -337,8 +337,8 @@ body {
 
 /* Keep spacing tidy on very small screens */
 @media (max-width: 420px) {
-    .design-carousel .carousel-slide { min-width: 180px; }
-    .design-carousel .carousel-image { max-height: 240px; }
+    .design-carousel .carousel-slide { min-width: 220px; }
+    .design-carousel .carousel-image { max-height: 280px; }
 }
 
 /* Scroll-snap and scrollbar utilities */
