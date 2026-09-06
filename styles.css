@@ -20,6 +20,13 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+@media (max-width: 767px) {
+    .line-clamp-2 {
+        display: block;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
+}
 /* Scroll animations */
 .fade-in {
     opacity: 0;
